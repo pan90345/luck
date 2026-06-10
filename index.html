@@ -1,67 +1,214 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>給你一句話</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:"Noto Sans TC",sans-serif;
-  background:linear-gradient(135deg,#f5efe6,#dfeeea);
-  color:#2f2a24;
-}
-.container{
-  width:min(90%,720px);
-  text-align:center;
-  padding:48px 32px;
-  animation:fadeIn 1.2s ease forwards;
-}
-.label{
-  opacity:.6;
-  letter-spacing:.15em;
-  margin-bottom:24px;
-}
-h1{
-  font-size:clamp(32px,6vw,64px);
-  line-height:1.35;
-  font-weight:500;
-  animation:float 4s ease-in-out infinite;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(16px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聲島許願湖</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "PingFang TC", sans-serif;
+      color: #4a3428;
+      background-image: url("background.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+    .overlay {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: rgba(255, 248, 232, 0.08);
+    }
+
+    .content {
+      width: min(90%, 900px);
+      text-align: center;
+      animation: fadeIn 1.5s ease forwards;
+      transform: translateY(-20px);
+    }
+
+    .label {
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      margin-bottom: 28px;
+      opacity: 0.85;
+    }
+
+    h1 {
+      min-height: 150px;
+      font-size: clamp(32px, 5vw, 64px);
+      line-height: 1.45;
+      font-weight: 500;
+      margin: 0 auto 36px;
+      text-shadow: 0 2px 12px rgba(255, 255, 255, 0.75);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    button {
+      padding: 18px 36px;
+      border: 1px solid rgba(110, 78, 45, 0.25);
+      border-radius: 999px;
+      background: rgba(245, 218, 168, 0.88);
+      color: #5a3b24;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(68, 42, 20, 0.22);
+      transition: 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 229, 181, 0.96);
+      box-shadow: 0 14px 34px rgba(68, 42, 20, 0.28);
+    }
+
+    .hint {
+      margin-top: 24px;
+      color: rgba(74, 52, 40, 0.8);
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-position: center;
+      }
+
+      .content {
+        transform: translateY(-10px);
+      }
+
+      h1 {
+        min-height: 120px;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 15px 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<main class="container">
-  <p class="label">今天想送給你一句話</p>
-  <h1 id="quote">載入中...</h1>
-</main>
+  <div class="overlay">
+    <main class="content">
+      <p class="label">今天想送給你的一句話</p>
 
-<script>
-const quotes = [
-  "慢慢來，也是一種前進。",
-  "你已經比昨天更靠近自己了。",
-  "今天也請溫柔地活著。",
-  "願你在混亂裡，仍然找到一座島。",
-  "先呼吸，再出發。",
-  "有些答案，會在路上慢慢長出來。",
-  "你不需要一次成為全部，只要先成為一點點。"
-];
+      <h1 id="quote">載入中...</h1>
 
-const randomIndex = Math.floor(Math.random() * quotes.length);
-document.getElementById("quote").textContent = quotes[randomIndex];
-</script>
+      <button id="wishBtn">朝湖中投入一枚硬幣許願</button>
+
+      <p class="hint">每一次點擊，都會聽見新的回聲</p>
+    </main>
+  </div>
+
+  <script>
+    const quotes = [
+      "願你今天，比昨天更靠近自己。",
+      "慢慢來，也是一種前進。",
+      "陽光會找到你，即使你暫時躲在雲後。",
+      "你已經很努力了，請不要忘記肯定自己。",
+      "今天的風，也許正把好消息吹來。",
+      "願你在混亂裡，仍然找到一座島。",
+      "不必一次抵達，先好好走完今天。",
+      "你的溫柔，會在某個地方發光。",
+      "有些花開得慢，但一樣值得等待。",
+      "願你心裡的湖，今天是平靜的。",
+      "即使有點疲憊，你仍然走在光裡。",
+      "你不是停下來，你是在蓄積下一次出發的力量。",
+      "今天也請相信，好事正在靠近。",
+      "你的存在，本身就是一種回聲。",
+      "願你被生活溫柔接住。",
+      "山還在，路還在，你也還在。",
+      "有些答案，會在路上慢慢長出來。",
+      "請把今天過成一首輕輕的歌。",
+      "你值得被好好對待，也值得好好對待自己。",
+      "願你在普通的日子裡，遇見小小的奇蹟。",
+      "不要急，月亮也不是一夜就圓。",
+      "今天的你，已經足夠好了。",
+      "願你有勇氣開始，也有餘裕休息。",
+      "那些沒說出口的努力，時間都會記得。",
+      "風會經過你，也會替你帶走一些沉重。",
+      "願你心裡的小貓，今天也被陽光曬暖。",
+      "即使世界很吵，你仍可以溫柔地發亮。",
+      "你走得不慢，你只是走得很真誠。",
+      "願今天的光，剛好落在你的肩上。",
+      "有時候，低潮只是心正在換氣。",
+      "你不需要成為誰，只要慢慢成為自己。",
+      "願你的願望，被湖水輕輕收下。",
+      "請相信，那些善意會回到你身邊。",
+      "即使有點惆悵，也不代表你失去了方向。",
+      "今天適合重新開始，哪怕只是一點點。",
+      "願你在日常裡，撿到一顆發亮的石頭。",
+      "你心中的島嶼，正在慢慢長出森林。",
+      "不是所有等待都白費，有些是在醞釀。",
+      "願你的疲憊，被晚風慢慢帶走。",
+      "你已經越過很多看不見的浪。",
+      "今天也請為自己留一點溫柔。",
+      "光不會一直刺眼，有時候也會很安靜。",
+      "願你遇見的人，都懂你的珍貴。",
+      "請記得，微小的前進也是前進。",
+      "有些孤單，是靈魂正在整理房間。",
+      "願你的心，像湖面一樣重新閃光。",
+      "今天可以不用完美，只要真實就好。",
+      "請把願望交給風，也把自己交給明天。",
+      "你會抵達的，只是不是用著急的方式。",
+      "願聲音穿過湖面，替你帶來平靜與力量。"
+    ];
+
+    const quoteElement = document.getElementById("quote");
+    const wishBtn = document.getElementById("wishBtn");
+
+    function newQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteElement.style.opacity = 0;
+
+      setTimeout(() => {
+        quoteElement.textContent = quotes[randomIndex];
+        quoteElement.style.opacity = 1;
+      }, 250);
+    }
+
+    quoteElement.style.transition = "opacity 0.4s ease";
+
+    newQuote();
+
+    wishBtn.addEventListener("click", newQuote);
+  </script>
 </body>
 </html>
