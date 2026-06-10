@@ -1,295 +1,286 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>聲島許願湖</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    min-height:100vh;
-
-    font-family:"Noto Sans TC","PingFang TC",sans-serif;
-
-    background-image:url("background.png");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-
-    overflow:hidden;
+body {
+  min-height: 100vh;
+  font-family: "Noto Sans TC", "PingFang TC", sans-serif;
+  background: url("background.png") center / cover no-repeat;
+  overflow: hidden;
 }
 
-.overlay{
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
+.overlay {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0) 42%),
+    linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,248,232,0.08));
 }
 
-.content{
-
-    width:min(90%,1000px);
-
-    text-align:center;
-
-    margin-top:-140px;
-
-    animation:fadeIn 1.5s ease;
+.content {
+  width: min(90%, 980px);
+  text-align: center;
+  margin-top: -145px;
+  animation: fadeIn 1.6s ease;
 }
 
-.divider{
-
-    color:#6b4c2c;
-
-    font-size:22px;
-
-    letter-spacing:8px;
-
-    margin-bottom:20px;
-
-    text-shadow:
-    0 2px 10px rgba(255,255,255,.9);
+.divider {
+  color: rgba(93, 66, 39, 0.75);
+  font-size: 20px;
+  letter-spacing: 10px;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 12px rgba(255,255,255,0.9);
 }
 
-#quote{
-
-    min-height:150px;
-
-    font-size:clamp(26px,3vw,48px);
-
-    font-weight:500;
-
-    line-height:1.6;
-
-    color:#4c3729;
-
-    white-space:pre-line;
-
-    text-shadow:
-    0 2px 14px rgba(255,255,255,.9);
-
-    transition:opacity .4s ease;
-
-    animation:float 4s ease-in-out infinite;
+#quote {
+  min-height: 145px;
+  font-size: clamp(26px, 3vw, 46px);
+  font-weight: 500;
+  line-height: 1.65;
+  color: #4b3628;
+  white-space: pre-line;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 2px 10px rgba(255,255,255,0.95),
+    0 8px 28px rgba(255,244,216,0.65);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  animation: float 4.5s ease-in-out infinite;
 }
 
-#wishBtn{
-
-    margin-top:15px;
-
-    padding:18px 42px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:rgba(241,214,164,.92);
-
-    color:#5a3b24;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.15);
-
-    transition:.3s;
+#wishBtn {
+  position: relative;
+  margin-top: 12px;
+  padding: 18px 46px;
+  border: 1px solid rgba(130, 92, 45, 0.28);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255,232,181,0.96), rgba(224,176,95,0.92));
+  color: #5a3a20;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.65),
+    0 10px 28px rgba(74,43,18,0.22);
+  transition: 0.28s ease;
 }
 
-#wishBtn:hover{
-
-    transform:translateY(-3px);
+#wishBtn::before {
+  content: "◌";
+  margin-right: 10px;
+  opacity: 0.75;
 }
 
-.hint{
-
-    margin-top:18px;
-
-    font-size:14px;
-
-    color:#6a5645;
-
-    text-shadow:
-    0 1px 8px rgba(255,255,255,.9);
+#wishBtn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.75),
+    0 15px 34px rgba(74,43,18,0.28);
 }
 
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
+#wishBtn:active {
+  transform: translateY(1px) scale(0.99);
 }
 
-@keyframes fadeIn{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.hint {
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: rgba(74,52,40,0.78);
+  text-shadow: 0 1px 8px rgba(255,255,255,0.95);
 }
 
-@media(max-width:768px){
-
-    .content{
-        margin-top:-60px;
-    }
-
-    .divider{
-        font-size:18px;
-        letter-spacing:4px;
-    }
-
-    #quote{
-        font-size:clamp(24px,7vw,38px);
-        min-height:120px;
-    }
-
-    #wishBtn{
-
-        font-size:16px;
-
-        padding:14px 24px;
-    }
+.ripple {
+  position: fixed;
+  left: 50%;
+  top: 58%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255,236,190,0.75);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  animation: ripple 1.1s ease-out forwards;
 }
 
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(9);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 768px) {
+  body {
+    background-position: center;
+  }
+
+  .content {
+    margin-top: -70px;
+  }
+
+  .divider {
+    font-size: 16px;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+  }
+
+  #quote {
+    min-height: 118px;
+    font-size: clamp(23px, 7vw, 36px);
+    line-height: 1.55;
+  }
+
+  #wishBtn {
+    font-size: 15px;
+    padding: 14px 24px;
+  }
+
+  .hint {
+    font-size: 12px;
+  }
+}
 </style>
 </head>
 
 <body>
-
 <div class="overlay">
+  <main class="content">
+    <div class="divider">────── ♡ ♡ ♡ ──────</div>
 
-    <main class="content">
+    <h1 id="quote"></h1>
 
-        <div class="divider">
-            ─────── ♡ ♡ ♡ ───────
-        </div>
+    <button id="wishBtn">朝湖中投入一枚硬幣許願</button>
 
-        <h1 id="quote"></h1>
-
-        <button id="wishBtn">
-            朝湖中投入一枚硬幣許願
-        </button>
-
-        <div class="hint">
-            每一次點擊，都會聽見新的回聲
-        </div>
-
-    </main>
-
+    <div class="hint">每一次點擊，都會聽見新的回聲</div>
+  </main>
 </div>
 
 <script>
-
 const quotes = [
-
-"願你今天，比昨天更靠近自己。",
-"慢慢來，也是一種前進。",
-"陽光會找到你，即使你暫時躲在雲後。",
-"你已經很努力了，請不要忘記肯定自己。",
-"今天的風，也許正把好消息吹來。",
-"願你在混亂裡，仍然找到一座島。",
-"不必一次抵達，先好好走完今天。",
-"你的溫柔，會在某個地方發光。",
-"有些花開得慢，但一樣值得等待。",
-"願你心裡的湖，今天是平靜的。",
-"即使有點疲憊，你仍然走在光裡。",
-"你不是停下來，你是在蓄積下一次出發的力量。",
-"今天也請相信，好事正在靠近。",
-"你的存在，本身就是一種回聲。",
-"願你被生活，溫柔接住。",
-"山還在，路還在，你也還在。",
-"有些答案，會在路上慢慢長出來。",
-"請把今天，過成一首輕輕的歌。",
-"你值得被好好對待，也值得好好對待自己。",
-"願你在普通的日子裡，遇見小小的奇蹟。",
-"不要急，月亮也不是一夜就圓。",
-"今天的你，已經足夠好了。",
-"願你有勇氣開始，也有餘裕休息。",
-"那些沒說出口的努力，時間都會記得。",
-"風會經過你，也會替你帶走一些沉重。",
-"願你心裡的小貓，今天也被陽光曬暖。",
-"即使世界很吵，你仍可以溫柔地發亮。",
-"你走得不慢，你只是走得很真誠。",
-"願今天的光，剛好落在你的肩上。",
-"有時候，低潮只是心正在換氣。",
-"你不需要成為誰，只要慢慢成為自己。",
-"願你的願望，被湖水輕輕收下。",
-"請相信，那些善意會回到你身邊。",
-"即使有點惆悵，也不代表你失去了方向。",
-"今天適合重新開始，哪怕只是一點點。",
-"願你在日常裡，撿到一顆發亮的石頭。",
-"你心中的島嶼，正在慢慢長出森林。",
-"不是所有等待都白費，有些是在醞釀。",
-"願你的疲憊，被晚風慢慢帶走。",
-"你已經越過很多，看不見的浪。",
-"今天也請為自己，留一點溫柔。",
-"光不會一直刺眼，有時候也會很安靜。",
-"願你遇見的人，都懂你的珍貴。",
-"請記得，微小的前進也是前進。",
-"有些孤單，是靈魂正在整理房間。",
-"願你的心，像湖面一樣重新閃光。",
-"今天可以不用完美，只要真實就好。",
-"請把願望交給風，也把自己交給明天。",
-"你會抵達的，只是不是用著急的方式。",
-"願聲音穿過湖面，替你帶來平靜與力量。"
-
+  "願你今天，比昨天更靠近自己。",
+  "慢慢來，也是一種前進。",
+  "陽光會找到你，即使你暫時躲在雲後。",
+  "你已經很努力了，請不要忘記肯定自己。",
+  "今天的風，也許正把好消息吹來。",
+  "願你在混亂裡，仍然找到一座島。",
+  "不必一次抵達，先好好走完今天。",
+  "你的溫柔，會在某個地方發光。",
+  "有些花開得慢，但一樣值得等待。",
+  "願你心裡的湖，今天是平靜的。",
+  "即使有點疲憊，你仍然走在光裡。",
+  "你不是停下來，你是在蓄積下一次出發的力量。",
+  "今天也請相信，好事正在靠近。",
+  "你的存在，本身就是一種回聲。",
+  "願你被生活，溫柔接住。",
+  "山還在，路還在，你也還在。",
+  "有些答案，會在路上慢慢長出來。",
+  "請把今天，過成一首輕輕的歌。",
+  "你值得被好好對待，也值得好好對待自己。",
+  "願你在普通的日子裡，遇見小小的奇蹟。",
+  "不要急，月亮也不是一夜就圓。",
+  "今天的你，已經足夠好了。",
+  "願你有勇氣開始，也有餘裕休息。",
+  "那些沒說出口的努力，時間都會記得。",
+  "風會經過你，也會替你帶走一些沉重。",
+  "願你心裡的小貓，今天也被陽光曬暖。",
+  "即使世界很吵，你仍可以溫柔地發亮。",
+  "你走得不慢，你只是走得很真誠。",
+  "願今天的光，剛好落在你的肩上。",
+  "有時候，低潮只是心正在換氣。",
+  "你不需要成為誰，只要慢慢成為自己。",
+  "願你的願望，被湖水輕輕收下。",
+  "請相信，那些善意會回到你身邊。",
+  "即使有點惆悵，也不代表你失去了方向。",
+  "今天適合重新開始，哪怕只是一點點。",
+  "願你在日常裡，撿到一顆發亮的石頭。",
+  "你心中的島嶼，正在慢慢長出森林。",
+  "不是所有等待都白費，有些是在醞釀。",
+  "願你的疲憊，被晚風慢慢帶走。",
+  "你已經越過很多，看不見的浪。",
+  "今天也請為自己，留一點溫柔。",
+  "光不會一直刺眼，有時候也會很安靜。",
+  "願你遇見的人，都懂你的珍貴。",
+  "請記得，微小的前進也是前進。",
+  "有些孤單，是靈魂正在整理房間。",
+  "願你的心，像湖面一樣重新閃光。",
+  "今天可以不用完美，只要真實就好。",
+  "請把願望交給風，也把自己交給明天。",
+  "你會抵達的，只是不是用著急的方式。",
+  "願聲音穿過湖面，替你帶來平靜與力量。"
 ];
 
-const quoteElement =
-document.getElementById("quote");
+const quoteElement = document.getElementById("quote");
+const wishBtn = document.getElementById("wishBtn");
 
-function formatQuote(text){
-
-    return text.replace(/，/g,"，\n");
+function formatQuote(text) {
+  return text.replace(/，/g, "，\n");
 }
 
-function newQuote(){
+function newQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
 
-    const randomIndex =
-    Math.floor(Math.random()*quotes.length);
+  quoteElement.style.opacity = 0;
+  quoteElement.style.transform = "translateY(10px)";
 
-    quoteElement.style.opacity = 0;
+  setTimeout(() => {
+    quoteElement.textContent = formatQuote(quotes[randomIndex]);
+    quoteElement.style.opacity = 1;
+    quoteElement.style.transform = "translateY(0)";
+  }, 260);
+}
 
-    setTimeout(()=>{
+function createRipple() {
+  const ripple = document.createElement("span");
+  ripple.className = "ripple";
+  document.body.appendChild(ripple);
 
-        quoteElement.textContent =
-        formatQuote(quotes[randomIndex]);
-
-        quoteElement.style.opacity = 1;
-
-    },250);
+  setTimeout(() => {
+    ripple.remove();
+  }, 1200);
 }
 
 newQuote();
 
-document
-.getElementById("wishBtn")
-.addEventListener("click",newQuote);
-
+wishBtn.addEventListener("click", () => {
+  createRipple();
+  newQuote();
+});
 </script>
-
 </body>
 </html>
